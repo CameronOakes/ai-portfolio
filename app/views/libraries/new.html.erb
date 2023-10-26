@@ -1,5 +1,8 @@
 <%= simple_form_for @library_new do |f| %>
   <%= f.input :name, required: true, autofocus: true %>
   <%= f.input :description %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.button :submit %>
 <% end %>
+
+<%# TODO: fix creation of library %>
