@@ -5,7 +5,7 @@ class LibrariesController < ApplicationController
   end
 
   def create
-    @library_new = Library.new
+    @library_new = Library.new(library_params)
 
     if @library_new.save
       redirect_to @library_new, notice: 'Library created'
@@ -20,5 +20,11 @@ class LibrariesController < ApplicationController
 
   def show
     @library = Library.find(params[:query])
+  end
+
+  private
+
+  def library_params
+    params.require(:library).permit(:name, :description, :photos)
   end
 end
