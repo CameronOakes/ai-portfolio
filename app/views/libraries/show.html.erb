@@ -1,0 +1,10 @@
+<div class="text-center">
+  <div>
+    <h1><%= @library.name %></h1>
+  </div>
+  <div>
+    <% @library.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, width: 400, height: 300, crop: :fill  %>
+    <% end %>
+  </div>
+</div>
