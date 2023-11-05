@@ -21,12 +21,26 @@ class LibrariesController < ApplicationController
     end
   end
 
+  def user_libraries
+    @user_libraries = Library.where(user_id: @user.id)
+  end
+
   def index
     @libraries = Library.all
   end
 
   def show
     @library = Library.find(params[:id])
+  end
+
+  def destroy
+    @library = Library.find(params[:id])
+    if @library.user == current_user
+      @library.destroy
+      redirect_to user_libraries_path, notice: 'Library succesfully deleted.'
+    else
+      redirect_to user_libraries_path, alert: 'You do not have permission to cancel this booking.'
+    end
   end
 
   private

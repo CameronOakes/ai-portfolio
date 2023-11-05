@@ -1,0 +1,12 @@
+<div>
+  <% if @user_libraries %>
+    <% @user_libraries.each do |library| %>
+      <div>
+        <%= link_to library.name, library_path(library) %>
+      </div>
+    <% end %>
+  <% else %>
+    <h3>You have no libraries</h3>
+    <%= link_to "Create a new library", new_library_path %>
+  <% end %>
+</div>

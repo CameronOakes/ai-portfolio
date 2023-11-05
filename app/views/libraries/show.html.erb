@@ -7,4 +7,6 @@
       <%= cl_image_tag photo.key, width: 400, height: 300, crop: :fill  %>
     <% end %>
   </div>
+
+  <%= button_to 'Delete Library', library_path(@library), method: :delete, data: { confirm: 'Are you sure you want to delete this library?' }, class: "btn btn-warning" %>
 </div>
