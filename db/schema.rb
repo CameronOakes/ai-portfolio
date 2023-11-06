@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_26_144345) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_06_185906) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_144345) do
     t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
+    t.boolean "ai_check"
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -48,7 +49,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_144345) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "ai_check"
     t.index ["user_id"], name: "index_libraries_on_user_id"
   end
 

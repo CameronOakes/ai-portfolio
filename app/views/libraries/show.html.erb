@@ -2,11 +2,22 @@
   <div>
     <h1><%= @library.name %></h1>
   </div>
-  <div>
+  <div data-controller="api-fetch">
     <% @library.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, width: 400, height: 300, crop: :fill  %>
+      <%= cl_image_tag photo.key, width: 400, height: 300, crop: :fill %>
+
+      <div data-api-fetch-key-value="<%= photo.key %>>"></div>
+
+      <% if photo.ai_check.nil? %>
+        <p>Photo not scanned</p>
+      <% end %>
+
+      <p data-api-fetch-target="check"></p>
+
     <% end %>
   </div>
-
+  <%= link_to 'Back to Libraries', libraries_path %>
   <%= button_to 'Delete Library', library_path(@library), method: :delete, data: { confirm: 'Are you sure you want to delete this library?' }, class: "btn btn-warning" %>
 </div>
+<%# TODO: add button to run the scan  %>
+<%# TODO: figure out why photo.key isnt being read in the stimulus controller %>
