@@ -14,8 +14,8 @@ export default class extends Controller {
   }
 
   async fetchData() {
-    const apiKey = process.env.AI_OR_NOT
-
+    // const apiKey = `${process.env.AI_OR_NOT}`;
+    const apiKey = ''
     const requestOptions = {
       method: "POST",
       headers: {
@@ -27,9 +27,10 @@ export default class extends Controller {
       })
     }
     try {
-      const response = await fetch("https://v3-atrium-prod-api.optic.xyz/aion/ai-generated/reports", requestOptions);
+      const response = await fetch("https://prod.ai-or-not.com/aion/ai-generated/reports", requestOptions);
       const data = await response.json();
       this.checkTarget.innerHTML = JSON.stringify(data, null, 2);
+      console.log(JSON.stringify(data, null, 2))
     } catch (error) {
       console.error("Error fetching data:", error);
     }
