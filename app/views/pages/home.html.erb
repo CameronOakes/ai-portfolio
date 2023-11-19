@@ -3,6 +3,6 @@
 </div> %>
 
 <div>
-  <%= link_to "Create new library", new_library_path %>
+  <%= link_to "Create new library", new_library_path if user_signed_in? %>
   <%= link_to "Browse Libraries", libraries_path %>
 </div>
