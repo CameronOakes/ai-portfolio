@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :libraries do
-    post 'update_report', on: :member
+    resources :items
   end
 
   get 'user-libraries', to: 'libraries#user_libraries'

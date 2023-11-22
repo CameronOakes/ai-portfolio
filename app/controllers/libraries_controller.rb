@@ -1,6 +1,5 @@
 class LibrariesController < ApplicationController
   before_action :set_user
-  before_action :set_library, only: [:update_report]
 
   def new
     @library_new = Library.new
@@ -42,13 +41,6 @@ class LibrariesController < ApplicationController
     else
       redirect_to user_libraries_path, alert: 'You do not have permission to cancel this booking.'
     end
-  end
-
-  def update_report
-    # Assume the value you want to update is passed as a parameter
-    @library.update_attribute(:report, params[:value])
-
-    render json: { status: 'success' }
   end
 
   private
