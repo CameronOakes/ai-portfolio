@@ -29,8 +29,35 @@ class LibrariesController < ApplicationController
     @libraries = Library.all
   end
 
+  # TODO: create a for each to add the correct photo.key to the payload url, and save the result to the corosponding photo
+
   def show
     @library = Library.find(params[:id])
+    api_key = ''
+    payload = { object: "https://res.cloudinary.com/dll73yhjm/image/upload/c_fill,h_300,w_400/#{@library.photos.first.key}" }
+
+    # Set the headers
+    headers = {
+      'x-api-key' => api_key,
+      'Content-Type' => 'application/json'
+    }
+
+    # Set the URL
+    url = 'https://prod.ai-or-not.com/aion/ai-generated/reports'
+
+    # Make the Faraday POST request
+    response = Faraday.post(url) do |req|
+      req.headers = headers
+      req.body = payload.to_json
+    end
+
+    # Parse and print the response
+    if response.success?
+      @result = JSON.parse(response.body)
+      puts "Success! Response: #{@result}"
+    else
+      puts "Error! Status code: #{response.status}, Body: #{response.body}"
+    end
   end
 
   def destroy
