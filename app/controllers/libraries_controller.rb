@@ -29,34 +29,48 @@ class LibrariesController < ApplicationController
     @libraries = Library.all
   end
 
-  # TODO: create a for each to add the correct photo.key to the payload url, and save the result to the corosponding photo
+  # TODO: fix the ai_check boolean (WHY NO WORK??)
 
   def show
     @library = Library.find(params[:id])
-    api_key = ''
-    payload = { object: "https://res.cloudinary.com/dll73yhjm/image/upload/c_fill,h_300,w_400/#{@library.photos.first.key}" }
+    @library.photos.each do |photo|
+      if photo.ai_check == false || photo.ai_check == true
+        api_key = ENV['AI_OR_NOT']
+        # api_key = ''
+        payload = { object: "https://res.cloudinary.com/dll73yhjm/image/upload/c_fill,h_300,w_400/#{photo.key}" }
 
-    # Set the headers
-    headers = {
-      'x-api-key' => api_key,
-      'Content-Type' => 'application/json'
-    }
+        # Set the headers
+        headers = {
+          'Authorization' => "Bearer #{api_key}",
+          'Content-Type' => 'application/json'
+        }
 
-    # Set the URL
-    url = 'https://prod.ai-or-not.com/aion/ai-generated/reports'
+        # Set the URL
+        url = 'https://api.aiornot.com/v1/reports/image'
 
-    # Make the Faraday POST request
-    response = Faraday.post(url) do |req|
-      req.headers = headers
-      req.body = payload.to_json
-    end
+        # Make the Faraday POST request
+        response = Faraday.post(url) do |req|
+          req.headers = headers
+          req.body = payload.to_json
+        end
 
-    # Parse and print the response
-    if response.success?
-      @result = JSON.parse(response.body)
-      puts "Success! Response: #{@result}"
-    else
-      puts "Error! Status code: #{response.status}, Body: #{response.body}"
+        # Parse and print the response
+        if response.success?
+          @result = JSON.parse(response.body)
+          photo.report = @result
+          puts @result['report']['verdict'] == 'human'
+          if @result['report']['verdict'] == 'human'
+            photo.ai_check = false
+          elsif @result['report']['verdict'] == 'ai'
+            photo.ai_check = true
+          else
+            puts 'There was an error reading the API Json response'
+          end
+          puts "Success! Response: #{@result}"
+        else
+          puts "Error! Status code: #{response.status}, Body: #{response.body}"
+        end
+      end
     end
   end
 

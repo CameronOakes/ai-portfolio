@@ -7,8 +7,12 @@
     <div data-controller="api-fetch" data-api-fetch-key-value="<%= photo.key %>">
       <%= cl_image_tag photo.key, width: 400, height: 300, crop: :fill %>
 
-      <% if photo.ai_check.nil? %>
-        <p>Photo not scanned</p>
+      <% if photo.ai_check == true %>
+        <p>Image is AI</p>
+      <% elsif photo.ai_check == false %>
+        <p>Image is human</p>
+      <% else %>
+        <p>Image not scanned</p>
       <% end %>
 
       <%# link to item %>
@@ -22,5 +26,4 @@
   <%= button_to 'Delete Library', library_path(@library), method: :delete, data: { confirm: 'Are you sure you want to delete this library?' }, class: "btn btn-warning" %>
 </div>
 <%# TODO: make an if else statement to create a form button to change the ai_check value of each photo  %>
-<%= @library.photos.first.key%>
-<%= @result %>
+<%= @library.photos.first.key %>
