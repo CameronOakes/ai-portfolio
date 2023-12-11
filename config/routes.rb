@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :libraries do
-    resources :items
+    member do
+      get 'run_scan', to: 'libraries#run_scan'
+    end
+    resources :items, only: [:show]
   end
 
   get 'user-libraries', to: 'libraries#user_libraries'

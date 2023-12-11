@@ -33,8 +33,12 @@ class LibrariesController < ApplicationController
 
   def show
     @library = Library.find(params[:id])
+  end
+
+  def run_scan
+    @library = Library.find(params[:id])
     @library.photos.each do |photo|
-      if photo.ai_check == false || photo.ai_check == true
+      if photo.ai_check != false || photo.ai_check != true
         api_key = ENV['AI_OR_NOT']
         # api_key = ''
         payload = { object: "https://res.cloudinary.com/dll73yhjm/image/upload/c_fill,h_300,w_400/#{photo.key}" }
@@ -58,7 +62,7 @@ class LibrariesController < ApplicationController
         if response.success?
           @result = JSON.parse(response.body)
           photo.report = @result
-          puts @result['report']['verdict'] == 'human'
+          puts @result
           if @result['report']['verdict'] == 'human'
             photo.ai_check = false
           elsif @result['report']['verdict'] == 'ai'
@@ -70,8 +74,10 @@ class LibrariesController < ApplicationController
         else
           puts "Error! Status code: #{response.status}, Body: #{response.body}"
         end
+        photo.save
       end
     end
+    redirect_to library_path(@library)
   end
 
   def destroy
