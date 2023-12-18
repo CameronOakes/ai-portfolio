@@ -1,12 +1,23 @@
-<div>
-  <% if @user_libraries %>
-    <% @user_libraries.each do |library| %>
-      <div>
-        <%= link_to library.name, library_path(library) %>
-      </div>
-    <% end %>
-  <% else %>
-    <h3>You have no libraries</h3>
-    <%= link_to "Create a new library", new_library_path %>
-  <% end %>
+<div class="container">
+  <div>
+    <h1>Your Libraries</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="list-group">
+        <% if @user_libraries %>
+          <% @user_libraries.each do |library| %>
+            <li class="list-group-item">
+              <h3 class="text-decoration-none"><%= link_to library.name, library_path(library) %></h3>
+              <br>
+              <p><%= library.description %></p>
+            </li>
+          <% end %>
+        <% else %>
+          <h3>You have no libraries</h3>
+          <%= link_to "Create a new library", new_library_path %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

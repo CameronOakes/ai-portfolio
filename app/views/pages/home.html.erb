@@ -1,8 +1,4 @@
-<%# <div data-controller="api-fetch">
-  <p data-api-fetch-target="check"></p>
-</div> %>
-
-<div>
-  <%= link_to "Create new library", new_library_path if user_signed_in? %>
-  <%= link_to "Browse Libraries", libraries_path %>
+<div class="container">
+  <%= link_to "Create new library", new_library_path, class: "btn btn-primary" if user_signed_in? %>
+  <%= link_to "Browse Libraries", libraries_path, class: "btn btn-secondary" %>
 </div>

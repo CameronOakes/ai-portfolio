@@ -1,8 +1,18 @@
-<%= simple_form_for @library_new do |f| %>
-  <%= f.input :name, required: true, autofocus: true %>
-  <%= f.input :description, as: :text %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.button :submit %>
-<% end %>
-
-<%# TODO: fix creation of library %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= simple_form_for @library_new do |f| %>
+        <div class="form-group">
+          <%= f.input :name, required: true, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.input :description, as: :text, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.input :photos, as: :file, input_html: { multiple: true }, class: "form-control-file" %>
+        </div>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
