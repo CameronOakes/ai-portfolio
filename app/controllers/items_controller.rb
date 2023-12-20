@@ -8,6 +8,6 @@ class ItemsController < ApplicationController
   private
 
   def set_library
-    @library = Library.find(params[:id])
+    @library = Library.find(params[:library_id])
   end
 end

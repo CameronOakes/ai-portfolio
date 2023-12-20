@@ -4,8 +4,10 @@
   </div>
 
   <% @library.photos.each do |photo| %>
-    <div data-controller="api-fetch" data-api-fetch-key-value="<%= photo.key %>">
-      <%= cl_image_tag photo.key, width: 400, height: 300, crop: :fill %>
+    <div>
+      <%= link_to library_item_path(@library, photo.id) do %>
+        <%= cl_image_tag photo.key, width: 400, height: 300, crop: :fill %>
+      <% end %>
 
       <% if photo.ai_check == true %>
         <p>Image is AI</p>

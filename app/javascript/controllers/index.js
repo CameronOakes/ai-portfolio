@@ -4,8 +4,8 @@
 
 import { application } from "./application"
 
-import ApiFetchController from "./api_fetch_controller"
-application.register("api-fetch", ApiFetchController)
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
