@@ -65,7 +65,6 @@ class LibrariesController < ApplicationController
         if response.success?
           @result = JSON.parse(response.body)
           photo.report = @result
-          puts @result
           if @result['report']['verdict'] == 'human'
             photo.ai_check = false
           elsif @result['report']['verdict'] == 'ai'
