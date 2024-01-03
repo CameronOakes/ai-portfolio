@@ -1,24 +1,42 @@
-<div class="text-center">
-  <div>
-    <h1><%= @library.name %></h1>
-  </div>
+<div class="container">
+  <div class="">
+    <div class="row">
+      <div class="col">
+        <p><%= @library.user.name %></p>
+      </div>
+      <div class="col-6 d-flex justify-content-center align-items-center">
+        <div class="text-center">
+          <h1><%= @library.name %></h1>
+          <p><em style="color: darkgrey;">"<%= @library.description %>"</em></p>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
 
-  <% @library.photos.each do |photo| %>
-    <div>
-      <%= link_to library_item_path(@library, photo.id) do %>
-        <%= cl_image_tag photo.key, width: 400, height: 300, crop: :fill %>
-      <% end %>
 
-      <% if photo.ai_check == true %>
-        <p>Image is AI</p>
-      <% elsif photo.ai_check == false %>
-        <p>Image is human</p>
-      <% else %>
-        <p>Image not scanned</p>
+    <div class="row">
+      <% @library.photos.each do |photo| %>
+        <div class="col-md-4">
+          <div class="card m-2">
+            <%= link_to library_item_path(@library, photo.id) do %>
+              <%= cl_image_tag photo.key, class: "card-image p-3", width: 400, height: 300, crop: :fill %>
+            <% end %>
+            <div class="card-body">
+              <% if photo.ai_check == true %>
+                <p class="card-text">Image is AI</p>
+              <% elsif photo.ai_check == false %>
+                <p class="card-text">Image is human</p>
+              <% else %>
+                <p class="card-text">Image not scanned</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
-  <% end %>
-  <%= link_to 'Scan Library', run_scan_library_path %>
-  <%= link_to 'Back to Libraries', libraries_path %>
-  <%= button_to 'Delete Library', library_path(@library), method: :delete, data: { confirm: 'Are you sure you want to delete this library?' }, class: "btn btn-warning" %>
+
+    <%= link_to 'Scan Library', run_scan_library_path %>
+    <%= link_to 'Back to Libraries', libraries_path %>
+    <%= button_to 'Delete Library', library_path(@library), method: :delete, data: { confirm: 'Are you sure you want to delete this library?' }, class: "btn btn-warning" %>
+  </div>
 </div>
