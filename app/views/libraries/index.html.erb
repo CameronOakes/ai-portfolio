@@ -3,17 +3,14 @@
     <div class="col-md-6">
       <ul class="list-group">
         <% @libraries.each do |library| %>
-          <li class="list-group-item d-flex">
-            <div class="flex-grow-1">
-              <h3 class="text-decoration-none"><%= link_to library.name, library_path(library) %></h3>
-              <br>
-              <p><%= library.description %></p>
-              <p><%= library.user.name %></p>
+          <div class="card mb-3">
+            <%= cl_image_tag library.photos.first.key, class: "card-img-top", width: 150, height: 100, crop: :fill %>
+            <div class="card-body">
+              <h3 class="card-title"><%= link_to library.name, library_path(library), class: "text-decoration-none" %></h3>
+              <p class="card-text"><%= library.description %></p>
+              <p class="card-text"><%= library.user.name %></p>
             </div>
-            <div>
-              <%= cl_image_tag library.photos.first.key, class: "card-image p-3", width: 400, height: 300, crop: :fill %>
-            </div>
-          </li>
+          </div>
         <% end %>
       </ul>
     </div>

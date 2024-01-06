@@ -1,13 +1,14 @@
 <div class="container">
   <div class="">
     <div class="row">
-      <div class="col">
-        <p><%= @library.user.name %></p>
+      <div class="col d-flex">
+        <%= cl_image_tag @library.user.avatar.key, class: "avatar-library", crop: :fill %>
+        <p><%= @library.user.name.strip %></p>
       </div>
       <div class="col-6 d-flex justify-content-center align-items-center">
         <div class="text-center">
           <h1><%= @library.name %></h1>
-          <p><em style="color: darkgrey;">"<%= @library.description %>"</em></p>
+          <p><em style="color: darkgrey;">"<%= @library.description.strip %>"</em></p>
         </div>
       </div>
       <div class="col"></div>
