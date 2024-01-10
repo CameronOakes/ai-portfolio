@@ -16,22 +16,22 @@
 
 
     <div class="row">
-      <% @library.photos.each do |photo| %>
-        <div class="col-md-4">
-          <div class="card m-2">
-            <%= link_to library_item_path(@library, photo.id) do %>
-              <%= cl_image_tag photo.key, class: "card-image p-3", width: 400, height: 300, crop: :fill %>
-            <% end %>
-            <div class="card-body">
+      <% @library.photos.each_slice(2) do |photos| %>
+        <div class="col-md-6">
+          <% photos.each do |photo| %>
+            <div class="d-flex justify-content-between">
+              <%= link_to library_item_path(@library, photo.id) do %>
+                <%= cl_image_tag photo.key, class: "card-image p-3", width: 600, crop: :lfill %>
+              <% end %>
               <% if photo.ai_check == true %>
-                <p class="card-text">Image is AI</p>
+                <p class="">Image is AI</p>
               <% elsif photo.ai_check == false %>
-                <p class="card-text">Image is human</p>
+                <p class="">Image is human</p>
               <% else %>
-                <p class="card-text">Image not scanned</p>
+                <p class="">Image not scanned</p>
               <% end %>
             </div>
-          </div>
+          <% end %>
         </div>
       <% end %>
     </div>

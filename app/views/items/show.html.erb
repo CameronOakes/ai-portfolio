@@ -1,8 +1,14 @@
 <div class="container">
   <%= @library.name %>
   <div data-controller="carousel" data-carousel-target="carousel" class="splide">
-    <% @library.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, crop: :fit if params[:id].to_i == photo.id %>
-    <% end %>
+    <div class="splide__track">
+      <ul class="splide__list">
+        <% @library.photos.each do |photo| %>
+          <li class="splide__slide">
+            <%= cl_image_tag photo.key %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
