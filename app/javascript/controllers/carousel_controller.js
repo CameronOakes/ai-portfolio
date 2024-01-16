@@ -14,9 +14,7 @@ export default class extends Controller {
       perMove: 1,
       gap: '1rem',
       drag: 'free',
-      pagination: false,
-      fixedWidth: '100%', // Set the width of the image
-      center: true, // Center the image
+      pagination: true,
       breakpoints: {
         640: {
           perPage: 1,
