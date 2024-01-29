@@ -1,0 +1,13 @@
+.text-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  color: rgb(0, 0, 0);
+}
+
+.is-ai {
+  border: red;
+  border-style: solid;
+  border-radius: 3px;
+}
