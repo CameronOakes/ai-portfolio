@@ -7,7 +7,19 @@
 }
 
 .is-ai {
-  border: red;
+  border: rgba(236, 29, 29, 0.281);
   border-style: solid;
   border-radius: 3px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 150px;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: #6298e9;
+  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.1);
+  z-index: 2000;
+  transition: 0.3s;
 }

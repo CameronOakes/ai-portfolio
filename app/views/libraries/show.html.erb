@@ -1,3 +1,10 @@
+<div class="sidebar">
+  <ul>
+    <li>testing</li>
+    <li>123</li>
+  </ul>
+</div>
+<%# TODO: add image info to the side bar once image is hovered %>
 <div class="container">
   <div class="">
     <div class="row">
@@ -19,10 +26,10 @@
       <% @library.photos.each_slice(2) do |photos| %>
         <div class="col-md-6">
           <% photos.each do |photo| %>
-            <div class="d-flex justify-content-between ">
+            <div class="d-flex justify-content-between mb-3">
               <div class="<%= 'is-ai' if photo.ai_check == true %>">
                 <%= link_to library_item_path(@library, photo.id) do %>
-                  <%= cl_image_tag photo.key, class: "card-image pb-3", width: 600, crop: :lfill %>
+                  <%= cl_image_tag photo.key, class: "card-image", width: 600, crop: :lfill %>
                 <% end %>
               </div>
               <% if photo.ai_check == true %>
