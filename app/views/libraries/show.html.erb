@@ -19,7 +19,7 @@
     <p>Number of Unscanned Photos: <%= @library.photos.where(ai_check: nil).count %></p>
   </div>
 </div>
-<%# TODO: add image info to the side bar once image is hovered %>
+
 <div class="container">
   <div class="">
     <div class="row">
@@ -36,24 +36,27 @@
       <div class="col"></div>
     </div>
 
+    <%# TODO: add a hover class to reveal image info %>
 
     <div class="row">
       <% @library.photos.each_slice(2) do |photos| %>
         <div class="col-md-6">
           <% photos.each do |photo| %>
-            <div class="d-flex justify-content-between mb-3">
+            <div class="card d-flex justify-content-between mb-3">
               <div class="<%= 'is-ai' if photo.ai_check == true %>">
                 <%= link_to library_item_path(@library, photo.id) do %>
-                  <%= cl_image_tag photo.key, class: "card-image", width: 600, crop: :lfill %>
+                  <%= cl_image_tag photo.key, class: "card-img", width: 600, crop: :lfill %>
+                  <div class="card-img-overlay">
+                    <% if photo.ai_check == true %>
+                      <p class="show-card-text">Image is AI</p>
+                    <% elsif photo.ai_check == false %>
+                      <p class="show-card-text">Image is human</p>
+                    <% else %>
+                      <p class="show-card-text">Image not scanned</p>
+                    <% end %>
+                  </div>
                 <% end %>
               </div>
-              <% if photo.ai_check == true %>
-                <p class="">Image is AI</p>
-              <% elsif photo.ai_check == false %>
-                <p class="">Image is human</p>
-              <% else %>
-                <p class="">Image not scanned</p>
-              <% end %>
             </div>
           <% end %>
         </div>
