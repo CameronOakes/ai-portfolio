@@ -36,7 +36,7 @@
       <div class="col"></div>
     </div>
 
-    <%# TODO: add a hover class to reveal image info %>
+    <%# TODO: make the card darker on hover %>
 
     <div class="row">
       <% @library.photos.each_slice(2) do |photos| %>
@@ -46,13 +46,13 @@
               <div class="<%= 'is-ai' if photo.ai_check == true %>">
                 <%= link_to library_item_path(@library, photo.id) do %>
                   <%= cl_image_tag photo.key, class: "card-img", width: 600, crop: :lfill %>
-                  <div class="card-img-overlay">
+                  <div class="card-img-overlay" data-controller="card-text" data-action="mouseover->card-text#enable mouseout->card-text#disable">
                     <% if photo.ai_check == true %>
-                      <p class="show-card-text">Image is AI</p>
+                      <p class="show-card-text text-remove" data-card-text-target="card">Image is AI</p>
                     <% elsif photo.ai_check == false %>
-                      <p class="show-card-text">Image is human</p>
+                      <p class="show-card-text text-remove" data-card-text-target="card">Image is human</p>
                     <% else %>
-                      <p class="show-card-text">Image not scanned</p>
+                      <p class="show-card-text text-remove" data-card-text-target="card">Image not scanned</p>
                     <% end %>
                   </div>
                 <% end %>

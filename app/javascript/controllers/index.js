@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CardTextController from "./card_text_controller"
+application.register("card-text", CardTextController)
+
 import CarouselController from "./carousel_controller"
 application.register("carousel", CarouselController)
 

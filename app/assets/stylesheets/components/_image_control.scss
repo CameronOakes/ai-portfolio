@@ -44,3 +44,12 @@
   padding: 10px;
   border-radius: 0 0 5px 5px;
 }
+
+.text-remove {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.text-remove:hover {
+  opacity: 1;
+}
