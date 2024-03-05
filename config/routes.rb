@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :libraries do
     member do
       get 'run_scan', to: 'libraries#run_scan'
+      post 'bookmark', to: 'bookmarks#create'
     end
     resources :items, only: [:show]
   end

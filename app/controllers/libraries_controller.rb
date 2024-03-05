@@ -33,6 +33,7 @@ class LibrariesController < ApplicationController
 
   def show
     @library = Library.find(params[:id])
+    @bookmarks = current_user.bookmarks.all
     @library.photos.each do |photo|
       puts "------- This is the #{photo.report.class} report from the #{photo.name}: #{photo.report} -------"
     end

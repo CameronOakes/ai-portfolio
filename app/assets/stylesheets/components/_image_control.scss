@@ -35,6 +35,7 @@
   color: white;
 }
 
+
 .show-card-text {
   position: absolute;
   bottom: 0;
@@ -42,7 +43,6 @@
   width: 100%;
   color: white;
   padding: 10px;
-  border-radius: 0 0 5px 5px;
 }
 
 .text-remove {
@@ -52,4 +52,8 @@
 
 .text-remove:hover {
   opacity: 1;
+}
+
+.card-gradient {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
 }
