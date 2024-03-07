@@ -9,4 +9,15 @@ class BookmarksController < ApplicationController
       puts " ----------- #{@bookmark.errors} --------------"
     end
   end
+
+  def destroy
+    @bookmark = Bookmark.find_by(user: current_user, library: Library.find(params[:library_id]))
+    if @bookmark.user == current_user
+      @bookmark.destroy
+      redirect_to libraries_path, notice: 'Bookmark removed'
+      puts '__________ Bookmark removed ___________'
+    else
+      puts '__________ Bookmark not removed ___________'
+    end
+  end
 end
