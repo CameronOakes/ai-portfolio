@@ -27,17 +27,27 @@
         <%= cl_image_tag @library.user.avatar.key, class: "avatar-library", crop: :fill %>
         <p><%= @library.user.name.strip %></p>
       </div>
+
       <div class="col-6 d-flex justify-content-center align-items-center">
         <div class="text-center">
           <h1><%= @library.name %></h1>
           <p><em style="color: darkgrey;">"<%= @library.description.strip %>"</em></p>
         </div>
       </div>
-      <% if user_signed_in? %>
-        <%= button_to "Bookmark Library", bookmark_library_path(library_id: @library.id), method: :post unless Bookmark.exists?(library_id: @library.id, user_id: current_user.id) %>
-        <%= button_to "Remove Bookmark", bookmark_library_path(library_id: @library.id), method: :delete if Bookmark.exists?(library_id: @library.id, user_id: current_user.id) %>
-      <% end %>
-      <div class="col"></div>
+
+      <div class="col d-flex justify-content-end">
+        <% if user_signed_in? %>
+          <% if Bookmark.exists?(library_id: @library.id, user_id: current_user.id) %>
+            <%= button_to bookmark_library_path(library_id: @library.id), method: :delete, class: "btn btn-sm", style: "text-decoration: none;" do %>
+              <i class="fa-solid fa-bookmark fa-2xl"></i>
+            <% end %>
+          <% else %>
+            <%= button_to bookmark_library_path(library_id: @library.id), method: :post, class: "btn btn-sm" do %>
+              <i class="fa-regular fa-bookmark fa-2xl"></i>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
 
     <div class="row">

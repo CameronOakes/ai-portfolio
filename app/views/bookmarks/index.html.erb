@@ -1,0 +1,15 @@
+<h1>Bookmarks</h1>
+
+<% if @bookmarks.any? %>
+  <ul>
+    <% @bookmarks.each do |bookmark| %>
+      <li><%= bookmark.title %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No bookmarks found.</p>
+<% end %>
+
+
+
+TODO: FINISH BOOKMARK PAGE AND LINK TO IT IN NAVBAR
