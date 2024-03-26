@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :items, only: [:show]
   end
 
+  get 'bookmarks', to: 'bookmarks#index'
+
   get 'user-libraries', to: 'libraries#user_libraries'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -10,6 +10,10 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def index
+    @bookmarks = current_user.bookmarks.all
+  end
+
   def destroy
     @bookmark = Bookmark.find_by(user: current_user, library: Library.find(params[:library_id]))
     @library = Library.find(params[:library_id])
