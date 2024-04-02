@@ -1,6 +1,6 @@
 <div class="sidebar" data-controller="sidebar" data-sidebar-target="sidebar" id="sidebar">
   <div class="sidebar-item">
-    <h5><i class="fa-solid fa-arrow-left fa-sm"></i> <%= link_to "Back To Libraries", libraries_path, class: "text-decoration-none" %></h5>
+    <h5><i class="fa-solid fa-arrow-left fa-sm"></i> <%= link_to "Back To Libraries", libraries_path, class: "sidebar-link" %></h5>
     <h3>Library Info</h3>
     <p>Library: <%= @library.name %></p>
     <p>Description: <%= @library.description %></p>
@@ -13,6 +13,12 @@
     <p>Human Photos: <%= @library.photos.where(ai_check: false).count %></p>
     <p>Unscanned Photos: <%= @library.photos.where(ai_check: nil).count %></p>
   </div>
+  <div class="d-flex">
+    <% if @library.photos.any? { |photo| photo.ai_check.nil? } %>
+      <%= link_to 'Scan Library', run_scan_library_path(@library), class: "scan-button" %>
+    <% end %>
+    <%= button_to 'Delete Library', library_path(@library), method: :delete, data: { confirm: 'Are you sure you want to delete this library?' }, class: "delete-button" if @library.user == current_user %>
+  </div>
 </div>
 
 <div class="container">
@@ -20,7 +26,8 @@
     <div class="row">
       <div class="col d-flex">
         <%= cl_image_tag @library.user.avatar.key, class: "avatar-library", crop: :fill %>
-        <p><%= @library.user.name.strip %></p>
+        <p><%= @library.user.name.strip %><br>Follow</p>
+
       </div>
 
       <div class="col-6 d-flex justify-content-center align-items-center">
@@ -52,7 +59,7 @@
             <div class="card d-flex justify-content-between mb-3">
               <div class="<%= 'is-ai' if photo.ai_check == true %>">
                 <%= link_to library_item_path(@library, photo.id) do %>
-                  <%= cl_image_tag photo.key, class: "card-img", width: 600, crop: :lfill %>
+                  <%= cl_image_tag photo.key, class: "card-img image-radius", width: 600, crop: :lfill %>
                   <div class="card-img-overlay card-gradient" data-controller="card-text" data-action="mouseover->card-text#enable mouseout->card-text#disable">
                     <% if photo.ai_check == true %>
                       <p class="show-card-text text-remove" data-card-text-target="card">Image is AI</p>
@@ -70,14 +77,6 @@
       <% end %>
     </div>
 
-    <% if @library.photos.any? { |photo| photo.ai_check.nil? } %>
-      <%= link_to 'Scan Library', run_scan_library_path(@library) %>
-    <% end %>
-    <%= link_to 'Back to Libraries', libraries_path %>
-    <%= button_to 'Delete Library', library_path(@library), method: :delete, data: { confirm: 'Are you sure you want to delete this library?' }, class: "btn btn-warning" %>
-  </div>
 
-  <% @bookmarks.each do |b| %>
-    <%= b.library.name %>
-  <% end %>
+  </div>
 </div>

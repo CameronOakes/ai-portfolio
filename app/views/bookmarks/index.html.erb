@@ -9,12 +9,12 @@
             <div class="col-md-2 mb-2">
               <div class="d-flex align-items-center">
                 <%= image_tag bookmark.library.user.avatar.url, class: "avatar-sm" %>
-                <strong><p class="m-1"><%= bookmark.user.name %></p></strong>
+                <p class="m-1"><%= bookmark.user.name %></p>
               </div>
             </div>
             <%= link_to library_path(bookmark.library.id), class: "text-decoration-none" do %>
               <div class="">
-                <h3 class="d-flex align-items-center sidebar-link" ><%= bookmark.library.name %></h3>
+                <h3 class="d-flex align-items-center bookmark-link" ><%= bookmark.library.name %></h3>
               </div>
             <% end %>
           </div>
@@ -24,7 +24,7 @@
                 <div class="">
                   <%= link_to library_path(bookmark.library.id) do %>
                     <div data-controller="card-text" data-action="mouseover->card-text#bookEnable mouseout->card-text#bookDisable" data-card-text-target="card" style="position: relative;">
-                      <%= cl_image_tag image.key, class: "card-img", width: 200, crop: :lfill %>
+                      <%= cl_image_tag image.key, class: "image-radius", width: 200, height: 200, crop: :lfill %>
                       <div class="card-gradient"></div> <!-- Add a div for the gradient overlay -->
                     </div>
                   <% end %>
@@ -39,6 +39,4 @@
   <% else %>
     <p>No bookmarks found.</p>
   <% end %>
-
-  TODO: fix the gradient class on hover
 </div>

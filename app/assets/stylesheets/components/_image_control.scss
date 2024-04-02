@@ -25,34 +25,16 @@
   margin-bottom: 20px;
 }
 
-.text-control {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  color: white;
-}
-
-
-.show-card-text {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  color: white;
-  padding: 10px;
-}
-
-.text-remove {
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.text-remove:hover {
-  opacity: 1;
-}
-
 .card-gradient {
   position: relative; /* Add this line to make the gradient overlay relative to the image */
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.image-radius {
+  border-radius: 4px;
+}
+
+.image-radius:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s;
 }
