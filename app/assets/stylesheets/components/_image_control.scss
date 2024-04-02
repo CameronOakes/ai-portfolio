@@ -53,5 +53,6 @@
 }
 
 .card-gradient {
+  position: relative; /* Add this line to make the gradient overlay relative to the image */
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
 }

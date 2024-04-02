@@ -6,7 +6,7 @@ export default class extends Controller {
 
   connect() {
     console.log("Hello, Stimulus!", this.element)
-    this.element.classList.remove("card-gradient")
+
   }
 
   enable() {
@@ -19,11 +19,11 @@ export default class extends Controller {
     this.element.classList.remove("card-gradient")
   }
 
-  toggle() {
-    if (this.cardTarget.classList.contains("card-gradient")) {
-      this.element.classList.remove("card-gradient")
-    } else {
-      this.element.classList.add("card-gradient")
-    }
+  bookEnable() {
+    this.element.classList.add("card-gradient")
+  }
+
+  bookDisable() {
+    this.element.classList.remove("card-gradient")
   }
 }

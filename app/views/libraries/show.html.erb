@@ -1,23 +1,17 @@
 <div class="sidebar" data-controller="sidebar" data-sidebar-target="sidebar" id="sidebar">
   <div class="sidebar-item">
-    <h5><%= link_to "Back To Libraries", libraries_path %></h5>
+    <h5><i class="fa-solid fa-arrow-left fa-sm"></i> <%= link_to "Back To Libraries", libraries_path, class: "text-decoration-none" %></h5>
     <h3>Library Info</h3>
-    <p>Library Name: <%= @library.name %></p>
-    <p>Library Description: <%= @library.description %></p>
-    <p>Library Created: <%= @library.created_at.strftime("%B %d, %Y") %></p>
-    <p>Library Updated: <%= @library.updated_at.strftime("%B %d, %Y") %></p>
-  </div>
-  <div class="sidebar-item">
-    <h3>Library Owner</h3>
-    <p>Owner Name: <%= @library.user.name %></p>
-    <p>Owner Email: <%= @library.user.email %></p>
+    <p>Library: <%= @library.name %></p>
+    <p>Description: <%= @library.description %></p>
+    <p>Created: <%= @library.created_at.strftime("%B %d, %Y") %></p>
   </div>
   <div class="sidebar-item">
     <h3>Library Photos</h3>
-    <p>Number of Photos: <%= @library.photos.count %></p>
-    <p>Number of AI Photos: <%= @library.photos.where(ai_check: true).count %></p>
-    <p>Number of Human Photos: <%= @library.photos.where(ai_check: false).count %></p>
-    <p>Number of Unscanned Photos: <%= @library.photos.where(ai_check: nil).count %></p>
+    <p>Photos: <%= @library.photos.count %></p>
+    <p>AI Photos: <%= @library.photos.where(ai_check: true).count %></p>
+    <p>Human Photos: <%= @library.photos.where(ai_check: false).count %></p>
+    <p>Unscanned Photos: <%= @library.photos.where(ai_check: nil).count %></p>
   </div>
 </div>
 

@@ -85,7 +85,9 @@ class LibrariesController < ApplicationController
 
   def destroy
     @library = Library.find(params[:id])
+    @bookmarks = Bookmark.where(library_id: @library.id)
     if @library.user == current_user
+      @bookmarks.destroy_all
       @library.destroy
       redirect_to user_libraries_path, notice: 'Library succesfully deleted.'
     else

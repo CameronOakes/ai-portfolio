@@ -12,16 +12,21 @@
                 <strong><p class="m-1"><%= bookmark.user.name %></p></strong>
               </div>
             </div>
-            <div class="">
-              <h3 class="d-flex align-items-center"><%= bookmark.library.name %></h3>
-            </div>
+            <%= link_to library_path(bookmark.library.id), class: "text-decoration-none" do %>
+              <div class="">
+                <h3 class="d-flex align-items-center sidebar-link" ><%= bookmark.library.name %></h3>
+              </div>
+            <% end %>
           </div>
           <div class="row">
-            <% bookmark.library.photos.limit(3).each do |image| %>
-              <div class="col-md-4">
-                <div class="card-gradient" data-controller="card-text" data-action="mouseover->card-text#toggle mouseout->card-text#toggle" data-card-text-target="card">
+            <% bookmark.library.photos.limit(5).each do |image| %>
+              <div class="col-md-2">
+                <div class="">
                   <%= link_to library_path(bookmark.library.id) do %>
-                    <%= cl_image_tag image.key, class: "card-img", width: 600, crop: :lfill %>
+                    <div data-controller="card-text" data-action="mouseover->card-text#bookEnable mouseout->card-text#bookDisable" data-card-text-target="card" style="position: relative;">
+                      <%= cl_image_tag image.key, class: "card-img", width: 200, crop: :lfill %>
+                      <div class="card-gradient"></div> <!-- Add a div for the gradient overlay -->
+                    </div>
                   <% end %>
                 </div>
               </div>
