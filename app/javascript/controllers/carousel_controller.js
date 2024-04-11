@@ -10,11 +10,13 @@ export default class extends Controller {
     console.log(this.carouselTarget)
     new Splide( this.carouselTarget, {
       type: 'loop',
-      perPage: 1, // Change perPage to 1 to show full image
+      perPage: 1,
       perMove: 1,
-      gap: '1rem',
+      gap: '5rem',
       drag: 'free',
       pagination: true,
+      heightRatio: 0.5, // Set the height ratio to 0.5 for half the screen height
+      autoWidth: true, // Set autoWidth to true to make the slides have the same width
       breakpoints: {
         640: {
           perPage: 1,
