@@ -1,13 +1,24 @@
-<div class="full-height">
-  <div data-controller="carousel" data-carousel-target="carousel" class="splide">
-    <div class="splide__track">
-      <ul class="splide__list">
-        <% @library.photos.each do |photo| %>
-          <li class="splide__slide">
-            <%= cl_image_tag photo.key %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+<div class="carousel-bg">
+  <div class="carousel-size">
+    <section data-controller="carousel" data-carousel-target="carousel" class="splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <% @library.photos.each do |photo| %>
+            <li class="splide__slide">
+              <%= cl_image_tag photo.key %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </section>
+
+
+    <ul id="thumbnails" class="thumbnails" data-controller="carousel">
+      <% @library.photos.each do |photo| %>
+      <li class="thumbnail" data-carousel-target="thumbnail">
+        <%= cl_image_tag photo.key %>
+      </li>
+      <% end %>
+    </ul>
   </div>
 </div>

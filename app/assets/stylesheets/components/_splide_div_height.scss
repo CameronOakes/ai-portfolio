@@ -1,3 +1,43 @@
-.full-height {
-  color: black;
+.carousel-bg {
+  background: black;
+}
+
+.thumbnails {
+  display: flex;
+  margin: 1rem auto 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  list-style: none;
+  margin: 0 0.2rem;
+  cursor: pointer;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+.splide__slide img {
+  width: 100%;
+  height: auto;
+}
+
+.carousel-size {
+  height: 100vh
+}
+
+.splide__track {
+  max-width: 850px; /* Adjust as needed */
+}
+
+/* Set a max-width for the images inside the slider */
+.splide__slide img {
+  max-width: 100%; /* Ensure images don't exceed container width */
+  height: auto; /* Maintain aspect ratio */
 }
