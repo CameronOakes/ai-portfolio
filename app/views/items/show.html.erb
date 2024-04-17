@@ -1,11 +1,12 @@
 <div class="carousel-bg">
-  <div class="carousel-size">
+  <%= link_to "", library_path(@library), class: "fa-regular fa-circle-xmark link-class" %>
+  <div class="">
     <section data-controller="carousel" data-carousel-target="carousel" class="splide">
       <div class="splide__track">
         <ul class="splide__list">
           <% @library.photos.each do |photo| %>
             <li class="splide__slide">
-              <%= cl_image_tag photo.key %>
+                <%= cl_image_tag photo.key %>
             </li>
           <% end %>
         </ul>
@@ -15,7 +16,7 @@
 
     <ul id="thumbnails" class="thumbnails" data-controller="carousel">
       <% @library.photos.each do |photo| %>
-      <li class="thumbnail" data-carousel-target="thumbnail">
+      <li class="thumbnail image-popup" data-carousel-target="thumbnail">
         <%= cl_image_tag photo.key %>
       </li>
       <% end %>

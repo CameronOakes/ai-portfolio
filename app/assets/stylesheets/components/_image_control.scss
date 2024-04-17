@@ -38,3 +38,20 @@
   transform: scale(1.02);
   transition: transform 0.2s;
 }
+
+.image-popup:hover {
+  transform: scale(1.06);
+  transition: transform 0.2s;
+}
+
+.link-class {
+  text-decoration: none;
+  font-size: 35px;
+  color: rgba(255, 255, 255, 0.411);
+  position: fixed;
+  top: 10px;
+  left: 7px;
+  padding: 10px;
+  display: flex;
+  z-index: 9999;
+}

@@ -9,7 +9,9 @@ export default class extends Controller {
     console.log("Hello, Stimulus!", this.element)
     console.log(this.carouselTarget)
     var splide = new Splide( this.carouselTarget, {
-      focus: 'center',
+
+      perPage: 1,
+
     });
 
     splide.mount();

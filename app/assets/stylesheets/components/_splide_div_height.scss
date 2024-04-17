@@ -1,5 +1,11 @@
 .carousel-bg {
   background: black;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .thumbnails {
@@ -23,21 +29,32 @@
   height: auto;
 }
 
-.splide__slide img {
-  width: 100%;
-  height: auto;
-}
-
 .carousel-size {
-  height: 100vh
+  height: 100vh;
 }
 
-.splide__track {
-  max-width: 850px; /* Adjust as needed */
-}
-
-/* Set a max-width for the images inside the slider */
 .splide__slide img {
-  max-width: 100%; /* Ensure images don't exceed container width */
-  height: auto; /* Maintain aspect ratio */
+  width: 90vh;
+  height: 90vh;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .splide__slide img {
+    width: 100%;
+    height: 100%;
+    height: auto;
+  }
+}
+
+/* Optionally, center individual slides if needed */
+.splide__slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.splide {
+  margin-top: 5px;
 }
