@@ -58,13 +58,19 @@
 }
 
 .scan-button {
-  background-color: #2b2b2b;
+  background: linear-gradient(to top, #06b800, #10c7a8);
   text-decoration: none;
   color: white;
   padding: 3px 5px;
   border-radius: 3px;
   cursor: pointer;
   border: 0px;
+
+  &:hover {
+    background: linear-gradient(to top right, rgb(11, 197, 230), #06b800, #10c7a8);
+    background-size: 200% 200%;
+    animation: gradientAnimation 1s ease-in forwards;
+  }
 }
 
 .scan-button:hover {

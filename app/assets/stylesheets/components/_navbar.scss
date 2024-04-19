@@ -12,3 +12,33 @@
 .navbar-lewagon .navbar-brand img {
   width: 80px;
 }
+
+.navbar-btn {
+  background: linear-gradient(to top, #06b800, #10c7a8);
+  border: none;
+  color: white;
+  padding: 7px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  margin-right: 5px;
+
+  &:hover {
+    background: linear-gradient(to top right, rgb(11, 197, 230), #06b800, #10c7a8);
+    background-size: 200% 200%;
+    animation: gradientAnimation 1s ease-in forwards;
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
