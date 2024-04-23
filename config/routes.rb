@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
+  get 'profile', to: 'profiles#show'
+
   resources :libraries do
     member do
       get 'run_scan', to: 'libraries#run_scan'
