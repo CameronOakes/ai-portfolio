@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 text-center">
+    <div class="col-md-4 text-center profile-info">
       <%= cl_image_tag current_user.avatar.key, class: "avatar-profile", alt: "" %>
       <h1><%= @user.name %></h1>
       <p><%= @user.email %></p>
+      <%= link_to edit_user_registration_path, class: "edit-profile-button" do %>
+        <i class="fa-solid fa-pen"></i>
+      <% end %>
     </div>
     <div class="col-md-8">
       <h2>Favorite Libraries</h2>
