@@ -25,8 +25,11 @@
   <div class="">
     <div class="row">
       <div class="col d-flex">
-        <%= cl_image_tag @library.user.avatar.key, class: "avatar-library", crop: :fill %>
-        <p><%= @library.user.name.strip %><br>Follow</p>
+        <%= link_to profile_path + "/" + @library.user.id.to_s do %>
+          <%= cl_image_tag @library.user.avatar.key, class: "avatar-library", crop: :fill %>
+
+        <% end %>
+        <p><%= @library.user.name.strip %></p>
 
       </div>
 

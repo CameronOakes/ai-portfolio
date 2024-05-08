@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
+  root to: 'pages#home'
 
-  get 'profile', to: 'profiles#show'
+  get 'profile', to: 'profiles#user_show'
+  get 'profile/:id', to: 'profiles#show'
 
   resources :libraries do
     member do
