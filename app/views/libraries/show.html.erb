@@ -1,23 +1,28 @@
-<div class="sidebar" data-controller="sidebar" data-sidebar-target="sidebar" id="sidebar">
-  <div class="sidebar-item">
-    <h5><i class="fa-solid fa-arrow-left fa-sm"></i> <%= link_to "Back To Libraries", libraries_path, class: "sidebar-link" %></h5>
-    <h3>Library Info</h3>
-    <p>Library: <%= @library.name %></p>
-    <p>Description: <%= @library.description %></p>
-    <p>Created: <%= @library.created_at.strftime("%B %d, %Y") %></p>
-  </div>
-  <div class="sidebar-item">
-    <h3>Library Photos</h3>
-    <p>Photos: <%= @library.photos.count %></p>
-    <p>AI Photos: <%= @library.photos.where(ai_check: true).count %></p>
-    <p>Human Photos: <%= @library.photos.where(ai_check: false).count %></p>
-    <p>Unscanned Photos: <%= @library.photos.where(ai_check: nil).count %></p>
-  </div>
-  <div class="d-flex">
-    <% if @library.photos.any? { |photo| photo.ai_check.nil? } %>
-      <%= link_to 'Scan Library', run_scan_library_path(@library), class: "scan-button" %>
-    <% end %>
-    <%= button_to 'Delete Library', library_path(@library), method: :delete, data: { confirm: 'Are you sure you want to delete this library?' }, class: "delete-button" if @library.user == current_user %>
+<div data-controller="sidebar">
+  <button id="openSidebarButton" class="sidebar-reveal-button" data-sidebar-target="openSidebarButton">Open Sidebar</button>
+
+  <div id="sidebar" class="sidebar"  data-sidebar-target="sidebar">
+    <button id="closeSidebarButton" class="sidebar-reveal-button" data-sidebar-target="closeSidebarButton">Close Sidebar</button>
+    <div class="sidebar-item">
+      <h5><i class="fa-solid fa-arrow-left fa-sm"></i> <%= link_to "Back To Libraries", libraries_path, class: "sidebar-link" %></h5>
+      <h3>Library Info</h3>
+      <p>Library: <%= @library.name %></p>
+      <p>Description: <%= @library.description %></p>
+      <p>Created: <%= @library.created_at.strftime("%B %d, %Y") %></p>
+    </div>
+    <div class="sidebar-item">
+      <h3>Library Photos</h3>
+      <p>Photos: <%= @library.photos.count %></p>
+      <p>AI Photos: <%= @library.photos.where(ai_check: true).count %></p>
+      <p>Human Photos: <%= @library.photos.where(ai_check: false).count %></p>
+      <p>Unscanned Photos: <%= @library.photos.where(ai_check: nil).count %></p>
+    </div>
+    <div class="d-flex">
+      <% if @library.photos.any? { |photo| photo.ai_check.nil? } %>
+        <%= link_to 'Scan Library', run_scan_library_path(@library), class: "scan-button" %>
+      <% end %>
+      <%= button_to 'Delete Library', library_path(@library), method: :delete, data: { confirm: 'Are you sure you want to delete this library?' }, class: "delete-button" if @library.user == current_user %>
+    </div>
   </div>
 </div>
 
