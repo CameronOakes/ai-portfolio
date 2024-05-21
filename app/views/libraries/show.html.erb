@@ -1,10 +1,15 @@
 <div data-controller="sidebar">
-  <button id="openSidebarButton" class="sidebar-reveal-button" data-sidebar-target="openSidebarButton">Open Sidebar</button>
+  <h5 class="">
+    <%= link_to libraries_path, class: "library-back-button" do %>
+      <i class="fa-solid fa-arrow-left fa-sm"></i> Back To Libraries
+    <% end %>
+  </h5>
+
+  <button id="openSidebarButton" class="sidebar-reveal-button" data-sidebar-target="openSidebarButton"><i class="fa-solid fa-circle-info"></i></button>
 
   <div id="sidebar" class="sidebar"  data-sidebar-target="sidebar">
-    <button id="closeSidebarButton" class="sidebar-reveal-button" data-sidebar-target="closeSidebarButton">Close Sidebar</button>
+    <button id="closeSidebarButton" class="fa-regular fa-circle-xmark sidebar-close-button" data-sidebar-target="closeSidebarButton"></button>
     <div class="sidebar-item">
-      <h5><i class="fa-solid fa-arrow-left fa-sm"></i> <%= link_to "Back To Libraries", libraries_path, class: "sidebar-link" %></h5>
       <h3>Library Info</h3>
       <p>Library: <%= @library.name %></p>
       <p>Description: <%= @library.description %></p>

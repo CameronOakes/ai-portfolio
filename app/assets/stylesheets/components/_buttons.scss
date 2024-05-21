@@ -48,7 +48,7 @@
 }
 
 .sidebar.animate {
-  transform: translateY(-150px);
+  transform: translateY(-100px);
 }
 
 .sidebar-item {
@@ -70,8 +70,61 @@
 }
 
 .sidebar-reveal-button {
-
+  font-size: 25px;
+  background-color: #ffffff00;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 162px;
+  left: 237px;
+  z-index: 9999;
+  i {
+    padding-right: 8px;
+    top: 2px;
+    position: relative;
+  }
 }
+
+.library-back-button {
+  text-decoration: none !important;
+  color: black;
+  background-color: #ffffff00;
+  border: none;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 71px;
+  left: 54px;
+  z-index: 9999;
+  i {
+    padding-right: 8px;
+    top: 0px;
+    position: relative;
+  }
+}
+
+.library-back-button:hover {
+  color: rgba(0, 0, 0, 0.842);
+  text-decoration: none !important;
+}
+
 .sidebar-reveal-button:hover {
-  background-color: #e0e0e0;
+  color: rgba(0, 0, 0, 0.842);
+}
+
+.sidebar-close-button {
+  text-decoration: none;
+  font-size: 25px;
+  border: none;
+  background-color: transparent;
+  color: black;
+  position: absolute;
+  top: -2px;
+  left: 207px;
+  padding: 10px;
+  display: flex;
+  z-index: 9999;
 }

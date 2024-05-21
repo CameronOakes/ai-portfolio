@@ -11,7 +11,7 @@ export default class extends Controller {
     sidebar.style.display = 'none';
     const openSidebarButton = this.openSidebarButtonTarget;
     const closeSidebarButton = this.closeSidebarButtonTarget;
-
+    openSidebarButton.style.display = 'block';
 
     openSidebarButton.addEventListener('click', () => {
       sidebar.style.display = 'block';
