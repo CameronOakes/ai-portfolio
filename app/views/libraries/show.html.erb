@@ -1,7 +1,7 @@
 <div data-controller="sidebar">
   <h5 class="">
     <%= link_to libraries_path, class: "library-back-button" do %>
-      <i class="fa-solid fa-arrow-left fa-sm"></i> Back To Libraries
+      <i class="fa-solid fa-arrow-left fa-sm"></i> Libraries
     <% end %>
   </h5>
 
@@ -83,13 +83,28 @@
                     <% end %>
                   </div>
                 <% end %>
+
               </div>
             </div>
+              <% if user_signed_in? %>
+                <% if Like.exists?(active_storage_attachments_id: photo.id, user_id: current_user.id) %>
+                  <%= link_to like_path(photo), method: :delete, class: "btn btn-sm", style: "text-decoration: none;", remote: true do %>
+                    <i class="fa-solid fa-heart fa-2xl"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to like_path(photo), method: :post, class: "btn btn-sm", remote: true do %>
+                    <i class="fa-regular fa-heart fa-2xl"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
           <% end %>
         </div>
       <% end %>
     </div>
-
+  <%# TODO: clean up the like feature,
+            add an all likes page,
+            add photo tags,
+            create simple algo to suggest images to the user %>
 
   </div>
 </div>
