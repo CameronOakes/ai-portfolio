@@ -6,11 +6,16 @@ class LikesController < ApplicationController
     if @like.save
       flash[:success] = 'Like created successfully.'
       puts 'Like created successfully.'
-      redirect_to root_path
     else
       flash[:error] = 'Failed to create like.'
       puts 'Failed to create like.'
-      redirect_to root_path
+      redirect_to new_user_registration_path
     end
+    redirect_to request.referer || root_path
+  end
+
+  def index
+    @user = current_user
+    @liked_photos = @user.likes
   end
 end

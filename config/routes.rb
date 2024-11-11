@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get 'like/:id', to: 'likes#create', as: 'like'
 
+  get 'likes', to: 'likes#index'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -91,7 +91,7 @@ class LibrariesController < ApplicationController
       @library.destroy
       redirect_to user_libraries_path, notice: 'Library succesfully deleted.'
     else
-      redirect_to user_libraries_path, alert: 'You do not have permission to cancel this booking.'
+      redirect_to user_libraries_path, alert: 'You do not have permission to delete this library.'
     end
   end
 
