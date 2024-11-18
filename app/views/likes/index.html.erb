@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Liked Photos</h1>
+
+  <% if @liked_photos.any? %>
+    <div class="liked-photos">
+      <% @liked_photos.each do |photo| %>
+        <div class="photo">
+          <%= cl_image_tag photo.active_storage_attachments.key , class: "card-img image-radius", width: 600, crop: :lfill %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No liked photos found.</p>
+  <% end %>
+
+</div>

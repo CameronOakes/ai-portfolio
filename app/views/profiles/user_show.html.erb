@@ -9,6 +9,14 @@
           <i class="fa-solid fa-pen icon-center"></i>
           Edit Profile
         <% end %>
+        <%= link_to likes_path(current_user), class: "likes-page-button" do %>
+          <i class="fa-solid fa-heart icon-center"></i>
+          My Likes
+        <% end %>
+        <%= link_to remove_all_likes_path(current_user), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete all likes?" }, class: "delete-likes-button" do %>
+          <i class="fa-solid fa-trash icon-center"></i>
+          Delete All Likes
+        <% end %>
       </div>
     </div>
     <div class="col-md-8">

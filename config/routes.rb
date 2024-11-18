@@ -20,6 +20,10 @@ Rails.application.routes.draw do
 
   get 'like/:id', to: 'likes#create', as: 'like'
 
+  delete 'like/:id', to: 'likes#destroy'
+
+  get 'remove-all-likes', to: 'likes#destroy_all'
+
   get 'likes', to: 'likes#index'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,5 +1,6 @@
 class LibrariesController < ApplicationController
   before_action :set_user
+  before_action :set_library, only: %i[show run_scan destroy]
 
   def new
     @library_new = Library.new
