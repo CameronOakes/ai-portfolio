@@ -75,7 +75,7 @@
                   <%= cl_image_tag photo.key, class: "card-img image-radius", width: 600, crop: :lfill %>
                   <div class="card-img-overlay card-gradient" data-controller="card-text" data-action="mouseover->card-text#enable mouseout->card-text#disable">
                     <% if photo.ai_check == true %>
-                      <p class="show-card-text text-remove" data-card-text-target="card">Image is AI</p>
+                      <p class="show-card-text text-remove" data-card-text-target="card"><i class="fa-solid fa-robot"></i> Image may be AI Generated</p>
                     <% elsif photo.ai_check == false %>
                       <p class="show-card-text text-remove" data-card-text-target="card">Image is human</p>
                     <% else %>
@@ -83,20 +83,23 @@
                     <% end %>
                   </div>
                 <% end %>
-
               </div>
             </div>
+            <div class="like-button">
               <% if user_signed_in? %>
                 <% if Like.exists?(active_storage_attachments_id: photo.id, user_id: current_user.id) %>
-                  <%= link_to like_path(photo), data: {turbo_method: :delete}, class: "btn btn-sm", style: "text-decoration: none;", remote: true do %>
+                  <%= link_to like_path(photo), data: {turbo_method: :delete}, class: "btn btn-sm", style: "text-decoration: none; color: red;", remote: true do %>
                     <i class="fa-solid fa-heart fa-2xl"></i>
+                    <span><%= Like.where(active_storage_attachments_id: photo.id).count %></span>
                   <% end %>
                 <% else %>
                   <%= link_to like_path(photo), method: :post, class: "btn btn-sm", remote: true do %>
-                    <i class="fa-regular fa-heart fa-2xl"></i>
+                      <i class="fa-regular fa-heart fa-2xl"></i>
+                      <span><%= Like.where(active_storage_attachments_id: photo.id).count %></span>
                   <% end %>
                 <% end %>
               <% end %>
+            </div>
           <% end %>
         </div>
       <% end %>

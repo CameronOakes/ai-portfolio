@@ -34,6 +34,12 @@
   padding: 10px;
 }
 
+.like-button {
+  color: rgb(0, 0, 0);
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
 .text-remove {
   opacity: 0;
   transition: opacity 0.3s;
